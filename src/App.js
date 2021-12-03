@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import BottomComponent from "./BottomComponent";
+import Timer from "./Timer";
+import {useState} from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function App(){
+
+  const [status, setStatus] = useState("PAUSE")
+  const [timeLimit, setTimeLimit] = useState(0)
+
+
+
+  return(
+    <>
+    <Timer status={status} timeLimit={timeLimit} />
+    <button onClick={()=> {setStatus("PLAY") ;console.log(status)}}>Start</button>
+    <button onClick={()=> setStatus("PAUSE")}>Stop</button>
+    <BottomComponent/>
+    </>
+  )
 }
 
 export default App;
